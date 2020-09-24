@@ -1,6 +1,6 @@
 // strict mode
 
-" use strict"
+" use strict";
 
  // creation de l'objet Map
 
@@ -60,7 +60,7 @@ class Map {
                     } else {
                         dispo.classList.replace("dispo_off", "dispo_on");
                     }
-                    ;
+
 
                 };
                 //---CREATE N0 DISPO MARKER
