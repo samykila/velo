@@ -1,0 +1,143 @@
+
+
+/** style de police**/
+@font-face{
+    font-family:'Roboto-Regular';
+    src: url('../fonts/Roboto-Regular.ttf');
+}
+@font-face{
+    font-family:'Roboto-Medium';
+    src: url('../fonts/Roboto-Medium.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+body,html{
+    width: 100%;
+    overflow-x:hidden;
+    font-style: normal;
+}
+/** mise en page du header**/
+
+.menu{
+    display: flex;
+    background-color: #fffff0;
+    height: 50px;
+    justify-content:space-between;
+    padding: 20px;
+}
+#nav{
+    display: inline-block;
+    padding: 30px;
+    justify-content: space-between;
+}
+#nav a{
+    padding: 30px;
+    text-decoration: none;
+    color: blue;
+    font-size:20px;
+}
+#main{
+    display: flex;
+}
+#logo{
+    height: 60px;
+}
+h1{
+    color:blue;
+}
+/* style de la carte*/
+#mapid{
+    height: 400px;
+    width: 80%;
+    margin: 1rem auto;
+    border: 2px solid deepskyblue;
+    border-radius: 20px;
+}
+.info {
+    display: none;
+}
+
+.showinfo {
+    display: block;
+    height: 725px;
+    width: 90%;
+    margin: 1rem auto;
+    padding: 0.5rem;
+    background-color: #e11f26;
+    border-radius: 20px;
+}
+
+.showinfo_onresa {
+    display: block;
+    height: 725px;
+    width: 90%;
+    margin: 1rem auto;
+    padding: 0.5rem;
+    background-color: #e11f26;
+    border-radius: 20px;
+}
+
+form ul {
+    padding: 1rem;
+}
+
+h3,h2{
+    font-size: 1.5rem;
+    text-decoration: underline;
+    text-align: center;
+    margin: 0.5rem;
+    margin-bottom: 1rem;
+    padding: 0;
+}
+
+form li {
+    list-style-type: none;
+    text-align: left;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+p {
+    margin: 1rem;
+    text-align: center;
+}
+
+input {
+    width: 80%;
+    margin-left: 1rem;
+}
+
+.button {
+    background-color: #388acb;
+    padding: 0.7rem 1rem;
+    border-radius: 5px;
+    color: white;
+}
+.canvasOff {
+    display: none;
+}
+
+.canvas {
+    background-color: white;
+    width: 96%;
+    margin-left: 2%;
+    margin-top: 2rem;
+    border: 3px solid black;
+    border-radius: 10px;
+    text-align: center;
+}
+
+canvas {
+    border: 1px solid grey;
+    width: 300px;
+    height: 150px;
+}
+
+.dispo_off {
+    display: none;
+}
+
+
+
+
+
