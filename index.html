@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vél Location</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin=""/>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="menu">
+    <div id="image">
+        <img id="logo" src="images/velo.png" alt="Logo velo" />
+    </div>
+    <div id="titre">
+        <h1> Vél Location</h1>
+    </div>
+    <div id="nav">
+        <a href="#top">Accueil</a>
+        <a href="#map-container">Carte</a>
+        <a href="#contact">Contact</a>
+    </div>
+</header>
+
+<!--fichier html-->
+<div id="mapid"></div>
+
+
+<!--   FORM   -->
+<form class="infos">
+    <h2>Station Information</h2>
+    <ul>
+        <li id="title"></li>
+        <li id="address"></li>
+        <li id="places"></li>
+        <li id="bikes"></li>
+    </ul>
+
+    <div id="dispo" class="dispos">
+        <p><label for="yourLastName">Votre Nom :</label><br><input type="text" id="yourLastName" placeholder="Nom" required></p>
+        <p><label for="yourFirstName">Votre Prénom :</label><br><input type="text" id="yourFirstName" placeholder="Prénom" required></p>
+        <p><input type="submit" value="Réserver !" class="button" id="button"></p>
+
+    </div>
+
+    <div id="canvas" class="canvasOff">
+        <h3>Signature :</h3>
+        <canvas id="signatureCanvas"></canvas>
+        <div id="buttonsContainer">
+            <button id="buttonClear" class="button">Effacer</button>
+            <button id="buttonAccept" class="button">Valider</button>
+        </div>
+        <p id="signWarning"></p>
+
+    </div>
+
+</form>
+
+<!--fichier JS-->
+
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+<script src="js/ajax.js" ></script>
+<script src="js/Map.js"></script>
+</body>
+</html>
