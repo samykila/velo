@@ -5,7 +5,7 @@
  // creation de l'objet Map
 
 class Map {
-    constructor(lat, long, mapid) {
+    constructor(lat, long) {
         this.lat = lat;
         this.long = long;
 
@@ -16,16 +16,16 @@ class Map {
 
     initMap() {
 
-        let mymap = L.map('mapid').setView([this.lat, this.long], 10);
+        let mymap = L.map("mapid").setView([this.lat, this.long], 10);
 // initialisation des tuiles
-        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+        L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             minZom: 1,
             maxZoom: 18,
-            id: 'mapbox/streets-v11',
+            id: "mapbox/streets-v11",
             tileSize: 512,
             zoomOffset: -1,
-            accessToken: 'pk.eyJ1Ijoic2FteW5hIiwiYSI6ImNrZWNzN242MTBsdGgyenBnbDFhcXRycmoifQ.KW6ntl4LiqCbqkQgFMWFoA'
+            accessToken: "pk.eyJ1Ijoic2FteW5hIiwiYSI6ImNrZWNzN242MTBsdGgyenBnbDFhcXRycmoifQ.KW6ntl4LiqCbqkQgFMWFoA"
         }).addTo(mymap);
 
         //---variables de déclaration
@@ -79,7 +79,7 @@ class Map {
                 } else {
                     let marker = L.marker(station.position, {icon: redMarker}).on("click", pop).addTo(mymap);
                 }
-                ;
+
 
 
             });
