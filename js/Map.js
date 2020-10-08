@@ -11,7 +11,6 @@ class Map {
 
     }
 
-
 // initialisation de la Carte
 
     initMap() {

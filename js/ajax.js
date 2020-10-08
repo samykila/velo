@@ -1,5 +1,5 @@
 // STRICT MODE
-"use strict"
+"use strict";
 
 //--- creation de la fonction ajax
 
