@@ -46,8 +46,9 @@ h1{
     color:blue;
 }
 /* style de la carte*/
+
 #mapid{
-    height: 400px;
+    height: 600px;
     width: 80%;
     margin: 1rem auto;
     border: 2px solid deepskyblue;
@@ -63,7 +64,7 @@ h1{
     width: 90%;
     margin: 1rem auto;
     padding: 0.5rem;
-    background-color: #e11f26;
+    background-color: skyblue;
     border-radius: 20px;
 }
 
@@ -73,7 +74,7 @@ h1{
     width: 90%;
     margin: 1rem auto;
     padding: 0.5rem;
-    background-color: #e11f26;
+    background-color: skyblue;
     border-radius: 20px;
 }
 
@@ -108,7 +109,7 @@ input {
 }
 
 .button {
-    background-color: #388acb;
+    background-color: red;
     padding: 0.7rem 1rem;
     border-radius: 5px;
     color: white;
