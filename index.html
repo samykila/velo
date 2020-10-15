@@ -9,62 +9,124 @@
     <meta name="author" content="Samyna Nourdine">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-          crossorigin=""/>
-    crossorigin=""/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+          integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+          crossorigin="">
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.3.0/dist/MarkerCluster.css" />
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.3.0/dist/MarkerCluster.Default.css" />
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header class="menu">
-    <div id="image">
-        <img id="logo" src="images/velo.png" alt="Logo velo" />
-    </div>
-    <div id="titre">
-        <h1> Vél Location</h1>
-    </div>
-    <div id="nav">
-        <a href="#top">Accueil</a>
-        <a href="#map-container">Carte</a>
-        <a href="#contact">Contact</a>
-    </div>
-</header>
 
 <!--fichier html-->
-<div id="mapid"></div>
 
+<header>
+
+    <div id="image">
+             <img id="logo" src="images/velo.png" alt="Logo velo" />
+            <h1> Vél Location</h1>
+    </div>
+    <nav>
+        <div class="deroulant"><i class="fas fa-bars fa-2x"></i></div>
+        <ul>
+            <li><a href="#top" title="Bienvenue">Présentation</a></li>
+            <li><a href="#reservation" title="Réservez un vélo'V">Réservation</a></li>
+            <li><a href="#contact" title="Contactez nous">Contact</a></li>
+        </ul>
+    </nav>
+    <div id="slider__bloc">
+
+        <figure class="slider__img">
+            <img src="images/img.png" alt="On sélectionne une station sur la carte parmie celles disponibles.">
+                <figcaption class="legende">
+
+                    <p> <em> 1: </em> Pour la reservation veuillez sélectionez une station.<br>
+                        La disponibilité dépend de la couleur de la station:<br>
+                        Vert: Réservation Possible.<br>
+                         Rouge: Réservation Impossible.</p>
+                </figcaption>
+         </figure>
+
+        <figure class="slider__img">
+             <img src="images/img1.jpg" alt="Fait vous plaisir, un geste simple qui représente un grand pas pour l'humanité'.">
+                <figcaption class="legende">
+
+                    <p> <em> 2: </em> S'il y reste des vélos disponibles. <br>
+                        Renseigner votre prénom et votre nom pour la location.</p>
+                </figcaption>
+        </figure>
+
+        <figure class="slider__img">
+            <img src="images/img2.png" alt="On signe dans l'encadrement pour valider la réservation.">
+                <figcaption class="legende">
+
+                    <P> <em> 3: </em> Après avoir  renseigner vos initiales, <br>
+                        Vueillez signer dans l'encadré. <br>
+                        Puis cliquez sur "Je réserve".</P>
+                </figcaption>
+        </figure>
+
+        <figure class="slider__img">
+            <img src="images/img3.png" alt="On clique sur le bouton < J'annule ma réservation > pour annuler la réservation en cours.">
+                <figcaption class="legende">
+
+                    <p> <em> 4: </em> Annulation possible en cliquant simplement sur <br>
+                        "J'annule ma réservation".<br>
+                        Si vous faites une nouvelle réservation, <br>
+                        celle-ci effacera celle encours.</p>
+                </figcaption>
+        </figure>
+     </div>
+
+</header>
 
 <!--   FORM   -->
-<form class="infos">
-    <h2>Station Information</h2>
-    <ul>
-        <li id="title"></li>
-        <li id="address"></li>
-        <li id="places"></li>
-        <li id="bikes"></li>
-    </ul>
 
-    <div id="dispo" class="dispos">
-        <p><label for="yourLastName">Votre Nom :</label><br><input type="text" id="yourLastName" placeholder="Nom" required></p>
-        <p><label for="yourFirstName">Votre Prénom :</label><br><input type="text" id="yourFirstName" placeholder="Prénom" required></p>
-        <p><input type="submit" value="Réserver !" class="button" id="button"></p>
+<section id="main">
+    <article id="slider">
 
-    </div>
+        <a href="#" id="control_next"><i class="fas fa-chevron-right fa-2x"></i></a>
+        <a href="#" id="control_prev"><i class="fas fa-chevron-left fa-2x"></i></a>
+        <a href="#" id="pause"><i id="pauseIcon" class="fas fa-pause fa-2x"></i></a>
 
-    <div id="canvas" class="canvasOff">
-        <h3>Signature :</h3>
-        <canvas id="signatureCanvas"></canvas>
-        <div id="buttonsContainer">
-            <button id="buttonClear" class="button">Effacer</button>
-            <button id="buttonAccept" class="button">Valider</button>
+    </article>
+    <div id="mapid"></div>
+    <form id="infos">
+                <h2>Stations Informations</h2>
+            <ul>
+                <li id="title"></li>
+                <li id="address"></li>
+                <li id="places"></li>
+                <li id="bikes"></li>
+                <li id="dispos"></li>
+            </ul>
+        <div id="blockresa">
+            <div id="disponibility" >
+                <p><label for="lastName">Votre Nom :</label><br><input type="text" id="lastName" placeholder="nom" required></p>
+                <p><label for="firstName">Votre Prénom :</label><br><input type="text" id="firstName" placeholder="Prénom" required></p>
+                <p><input type="submit" value="Réserver !" class="button" id="button"></p>
+            </div>
+             <div id="reservation">
+                <canvas id="canvas">
+                    Veuillez mettre votre navigateur à jour afin de finaliser votre réservation.
+                </canvas>
+             </div>
+            <div id="canvasContainer">
+                <p>Signature:</p>
+                <button type="button" id="clearCanvas" class="button butName">Effacer la signature</button>
+                <button type="button" id="confirmResa" class="button butName">Confirmer la réservation</button>
+             </div>
+            <div id="infosReservation" class="reserver">
+                <p id="Reservinfos"></p>
+                <p>Temps restant avant annulation de la réservation :<br>
+                    <span class="timer"><span id="mins"></span> min <span id="sec"></span></span></p>
+                <button id="cancel" class="bold typo">J'annule ma réservation</button>
+            </div>
+
         </div>
-        <p id="signWarning"></p>
+    </form>
 
-    </div>
-
-</form>
+</section>
 
 <!--fichier JS-->
 
@@ -74,5 +136,6 @@
 <script type='text/javascript' src='https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js'></script>
 <script src="js/ajax.js" ></script>
 <script src="js/Map.js"></script>
+<script src="js/domscript.js"></script>
 </body>
 </html>

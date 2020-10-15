@@ -7,19 +7,18 @@ class Map {
     constructor(lat, lng) {
         this.lat = lat;
         this.lng = lng;
-        this.zoom= 14;
+        this.zoomLevel= 14;
     }
 // initialisation de la Carte
 
     initMap() {
-        let mymap = L.map("mapid").setView([this.lat, this.lng], this.zoom);
+        let mymap = L.map("mapid").setView([this.lat, this.lng], this.zoomLevel);
+
 // initialisation des tuiles
         L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             minZom: 14,
             maxZoom: 18,
-            zoomDelta: 0.25,
-            zoomSnap: 0,
             id: "mapbox/streets-v11",
             tileSize: 512,
             zoomOffset: -1,
@@ -34,8 +33,10 @@ class Map {
             console.log(stationsList);
 
             //Affichage des infos de la station lors d'un clic sur son marker
+
             stationsList.forEach(function (station) {
                 console.log(station);
+
                 //---variables de déclaration
 
                 const form = document.querySelector("form");
@@ -43,11 +44,11 @@ class Map {
                 const address = document.getElementById("address");
                 const places = document.getElementById("places");
                 const bikes = document.getElementById("bikes");
-                const dispos = document.getElementById("disponibility");
+                const dispos = document.getElementById("dispos");
 
-                 let pop = function () {
+                let pop = function () {
 
-                    form.classList.replace("infos", "showinfo");
+                    form.classList.replace("infosReservation", "showinfo");
                     marker.bindPopup(station.name).openPopup();
                     sessionStorage.setItem("stationName", station.name);
 
@@ -58,8 +59,7 @@ class Map {
 
                     if (station.available_bikes === 0) {
                         dispo.classList.replace("dispo_on", "dispo_off");
-                    }
-                    else {
+                    } else {
                         dispo.classList.replace("dispo_off", "dispo_on");
                     }
                 }
@@ -68,17 +68,17 @@ class Map {
                 let redMarker = L.icon({
                     iconUrl: "images/redMark.png",
                     iconSize: [35, 35],
-                    shadowSize:   [70, 70],
+                    shadowSize: [70, 70],
                     iconAnchor: [25, 50],
                     shadowAnchor: [0, 0],
                     popupAnchor: [-5, -40]
                 });
 
-                let greenMarker= L.icon({
+                let greenMarker = L.icon({
                     iconUrl: "images/greenMark.png",
-                    shadowSize:   [70, 70],
+                    shadowSize: [70, 70],
                     iconSize: [35, 35],
-                    iconAnchor: [22, 50],
+                    iconAnchor: [25, 50],
                     shadowAnchor: [0, 0],
                     popupAnchor: [-5, -40]
                 });
@@ -86,24 +86,61 @@ class Map {
                 let marker = "";
 
                 if (station.status === "OPEN") {
-                    marker = L.marker([station.position.lat, station.position.lng], {icon:greenMarker }).addTo(mymap);
-                }
-                else {
+                    marker = L.marker([station.position.lat, station.position.lng], {icon: greenMarker}).addTo(mymap);
+                } else {
                     marker = L.marker([station.position.lat, station.position.lng], {icon: redMarker}).addTo(mymap);
                 }
-                marker.bindPopup(station);
+
                 if (station.available_bikes !== 0) {
-                    let marker = L.marker(station.position).on("click", pop).addTo(mymap);
+                    let marker = L.marker(station.position, {icon:greenMarker}).on("click", pop).addTo(mymap);
                 }
                 else {
                     let marker = L.marker(station.position, {icon: redMarker}).on("click", pop).addTo(mymap);
                 }
+                marker.bindPopup(station);
+
+
 
             });
         });
 
     };
 }
-let mapLyon = new Map(45.7578137,4.8320114);
-mapLyon.initMap()
+/*let mapLyon = new Map(45.7578137,4.8320114);
+mapLyon.initMap()*/
 
+//---CREATE P FOR RESERVATION MESSAGE
+let attention = document.createElement("p");
+dispo.appendChild(attention);
+
+//---ADD RESERVATION FUNCTION
+Map.reservation = function(e) {
+
+//---GET VALUE OF INPUTS
+    let lastName = document.getElementById("yourLastName").value;
+    let firstName = document.getElementById("yourFirstName").value;
+    let  canvasContainer = document.getElementById("canvasContainer");
+
+
+    //---VERIFY INPUTS VALUE
+    if((lastName !== "") && (firstName !== "")) {
+
+        //---SET VALUES IN LOCALSTORAGE
+        localStorage.setItem("firstName", firstName);
+        localStorage.setItem("lastName", lastName);
+
+        //---DISPLAY THE CANVAS
+        canvasContainer.classList.replace("canvasOff", "canvas");
+        dispo.classList.replace("dispo_on", "dispo_off");
+    }else
+        {
+        attention.innerHTML = "Veuillez saisir vos Nom et Prénom svp";
+
+    }
+    e.preventDefault();
+};
+//---SET THE EVENT FOR SCRIPT.JS
+let button = document.getElementById("button");
+
+//---RESERVATION INIT
+button.addEventListener("click", Map.reservation);
